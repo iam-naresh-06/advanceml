@@ -18,9 +18,9 @@ import sys
 def main():
     try:
         print("Loading dataset...")
-        df = pd.read_csv("movie_review_sentiment_analysis.csv")
+        df = pd.read_csv("text_classification_dataset.csv")
     except FileNotFoundError:
-        print("Error: 'movie_review_sentiment_analysis.csv' not found.")
+        print("Error: 'text_classification_dataset.csv' not found.")
         print("Please ensure the dataset is in the same directory.")
         sys.exit(1)
 
@@ -40,22 +40,22 @@ def main():
     plt.title("Sentiment Distribution")
     # plt.show() # Commented out to prevent blocking, uncomment if you want to see plots
 
-    df['review_length'] = df['review'].apply(len)
+    df['text_length'] = df['text'].apply(len)
 
     plt.figure()
-    plt.hist(df['review_length'])
-    plt.xlabel("Review Length")
+    plt.hist(df['text_length'])
+    plt.xlabel("Text Length")
     plt.ylabel("Frequency")
-    plt.title("Distribution of Review Lengths")
+    plt.title("Distribution of Text Lengths")
     # plt.show()
 
     plt.figure()
-    sns.boxplot(x=df['review_length'])
+    sns.boxplot(x=df['text_length'])
     plt.title("Outlier Detection using Boxplot")
     # plt.show()
 
     # Splitting Data
-    X = df['review']
+    X = df['text']
     y = df['sentiment']
 
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
@@ -126,11 +126,11 @@ def main():
     print("Random Forest Accuracy:", accuracy_score(y_test, rf_pred))
 
     # Manual Test
-    manual_review = ["Not worth the price"]
-    manual_tfidf = tfidf.transform(manual_review)
+    manual_text = ["Not worth the price"]
+    manual_tfidf = tfidf.transform(manual_text)
     prediction = svm.predict(manual_tfidf)
     label_map = {0: "Negative", 1: "Positive"}
-    print(f"Review: '{manual_review[0]}', Predicted sentiment: {label_map[prediction[0]]}")
+    print(f"Text: '{manual_text[0]}', Predicted sentiment: {label_map[prediction[0]]}")
 
     # Saving Models
     print("Saving models...")
@@ -139,10 +139,10 @@ def main():
     print("Models saved: svm_text_classifier.pkl, tfidf_vectorizer.pkl")
 
     # Final Test
-    manual_review_2 = ["Waste of money"]
-    manual_tfidf_2 = tfidf.transform(manual_review_2)
+    manual_text_2 = ["Waste of money"]
+    manual_tfidf_2 = tfidf.transform(manual_text_2)
     prediction_2 = svm.predict(manual_tfidf_2)
-    print(f"Review: '{manual_review_2[0]}', Predicted sentiment: {label_map[prediction_2[0]]}")
+    print(f"Text: '{manual_text_2[0]}', Predicted sentiment: {label_map[prediction_2[0]]}")
 
 if __name__ == "__main__":
     main()

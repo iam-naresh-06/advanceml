@@ -1,10 +1,10 @@
-# Movie Review Sentiment Analysis
+# Text Classification
 
-This project implements a sentiment analysis model for movie reviews using Support Vector Machines (LinearSVC) and Random Forest classifiers. It processes text data using TF-IDF vectorization and predicts whether a review is positive or negative.
+This project implements a text classification model using Support Vector Machines (LinearSVC) and Random Forest classifiers. It processes text data using TF-IDF vectorization and predicts the sentiment or category of the text.
 
 ## Features
 
--   **Data Visualization**: Exploratory Data Analysis (EDA) including sentiment distribution and review length analysis.
+-   **Data Visualization**: Exploratory Data Analysis (EDA) including sentiment distribution and text length analysis.
 -   **Text Preprocessing**: TF-IDF vectorization with n-grams.
 -   **Model Training**:
     -   Linear Support Vector Classification (LinearSVC)
@@ -28,7 +28,7 @@ This project implements a sentiment analysis model for movie reviews using Suppo
 ## Usage
 
 ### 1. Data Setup
-The project requires a dataset named `movie_review_sentiment_analysis.csv`.
+The project requires a dataset named `text_classification_dataset.csv`.
 If you don't have the real dataset, you can generate a mock dataset for testing:
 
 ```bash
@@ -46,7 +46,7 @@ python train_model.py
 The script will output:
 -   Accuracy scores and Classification reports.
 -   Best hyperparameters found by GridSearch.
--   Predictions for sample manual reviews.
+-   Predictions for sample manual text inputs.
 -   Saved model files (.pkl) in the current directory.
 
 ## Dependencies
