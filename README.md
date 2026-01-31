@@ -16,7 +16,7 @@ This project implements a sentiment analysis model for movie reviews using Suppo
 
 1.  Clone the repository:
     ```bash
-    git clone https://github.com/Nishanth2206/advanceml.git
+    git clone https://github.com/iam-naresh-06/Advanced-ML.git
     cd advanceml
     ```
 
